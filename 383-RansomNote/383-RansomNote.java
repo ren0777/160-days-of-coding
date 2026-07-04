@@ -1,0 +1,19 @@
+// Last updated: 7/4/2026, 10:55:22 PM
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        if(ransomNote.length()>magazine.length()) return false;
+
+        int[] charCount=new int[26];
+
+        for(char c:magazine.toCharArray()){
+            charCount[c-'a']++;
+        }
+        for(char c : ransomNote.toCharArray()){
+            if(charCount[c-'a']==0){
+                return false;
+            }
+            charCount[c-'a']--;
+        }
+        return true;
+    }
+}
